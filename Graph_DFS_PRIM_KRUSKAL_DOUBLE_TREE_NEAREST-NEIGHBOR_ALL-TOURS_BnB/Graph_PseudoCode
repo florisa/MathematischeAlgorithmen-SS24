@@ -1,0 +1,67 @@
+# Graph Input Format:
+
+The first line contains the number of vertices in the graph.
+The following lines contain the edges and their weights.
+If there is no weight specified, the weight is assumed to be 1.
+The vertices are numbered from 0 to n-1.
+
+# Pseudocode for the Nearest Neighbor heuristik
+
+Input: A complete graph Kn with edge weights c(e).
+Output: A Hamiltonian cycle.
+    1: Select an arbitrary starting node v1 as the current node and mark it.
+    2: Select an unmarked neighbor node u of the current node v with the smallest edge weight c(v, u) and add it to the tour.
+    3: Set u as the current node v and mark it.
+    4: If there are still unmarked nodes: Go back to Step 2.
+    5: Add the edge c(v, v1) from the current node to the starting node to the tour.
+
+# Pseudocode for Double Tree Algorithm
+
+1. Construct a MST T of the graph
+2. Double all edges of T, resulting in an eulerian graph TD
+3. Compute an eulerian tour of TD
+4. Transverse the eulerian tour starting from the first vertex
+    if a node has been visited, take a shortcut to the next unvisited node
+    if not, visit the node and mark it as visited and append it to the Hamiltonian cycle
+5. Return the Hamiltonian cycle
+
+# Pseudocode for the Prim algorithm using a priority queue:
+
+1. Create a priority queue Q to store the vertices and their weights.
+2. Initialize the priority queue with the starting vertex and a weight of 0.
+3. While Q is not empty:
+    1. Remove the vertex with the smallest weight from Q.
+    2. Add the vertex to the minimum spanning tree.
+    3. Update the weights of the adjacent vertices in Q.
+4. Return the minimum spanning tree.
+
+# Pseudocode for the Kruskal algorithm using a Union-Find data structure:
+
+1. Sort all the edges in non-decreasing order of their weight.
+2. Initialize a Union-Find data structure with each vertex as a separate set.
+3. Initialize an empty list to store the edges of the MST.
+4. For each edge in the sorted list:
+    - If the two vertices of the edge are in different sets (i.e., not connected):
+        - Add the edge to the MST list.
+        - Union the two sets.
+5. The MST list now contains the edges of the minimum spanning tree.
+
+# Satisfaction of Triangle Inequality: 
+The weights satisfy the triangle inequality, which means that for any three vertices aa, bb, and cc, 
+the direct path from aa to cc is not longer than the path from aa to bb and then from bb to cc. 
+This is a typical condition in graph theory used in scenarios like routing and navigation to ensure that the direct path between two points is the shortest.
+
+# Remember:
+Euler tours traverse every edge once, while Hamiltonian tours visit every vertex once
+
+# Source
+https://en.wikipedia.org/wiki/Prim%27s_algorithm
+https://en.wikipedia.org/wiki/Kruskal%27s_algorithm
+https://www.cs.princeton.edu/courses/archive/spr02/cs226/lectures/mst-4up.pdf
+
+# To compile & run:
+g++ -o graph_app main.cpp Graph.cpp GraphReader.cpp GraphAlgorithm.cpp UnionFind.cpp 
+./graph_app path_to_your_graph_file.txt
+
+# To extend the stack:
+ulimit -s unlimited 
