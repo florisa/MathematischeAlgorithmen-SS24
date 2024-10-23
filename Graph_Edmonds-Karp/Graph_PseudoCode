@@ -1,0 +1,25 @@
+# Graph Input Format:
+
+The first line contains the number of vertices in the graph.
+The following lines contain the edges and their weights.
+If there is no weight specified, the weight is assumed to be 1.
+The vertices are numbered from 0 to n-1.
+
+# Edmonds-Karp algorithm
+
+
+# Satisfaction of Triangle Inequality: 
+The weights satisfy the triangle inequality, which means that for any three vertices aa, bb, and cc, 
+the direct path from aa to cc is not longer than the path from aa to bb and then from bb to cc. 
+This is a typical condition in graph theory used in scenarios like routing and navigation to ensure that the direct path between two points is the shortest.
+
+# Remember:
+Euler tours traverse every edge once, while Hamiltonian tours visit every vertex once
+
+
+# To compile & run:
+g++ -o graph_app main.cpp Graph.cpp GraphReader.cpp GraphAlgorithm.cpp 
+./graph_app path_to_your_graph_file.txt
+
+# To extend the stack:
+ulimit -s unlimited 
